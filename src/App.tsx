@@ -577,6 +577,10 @@ export default function App() {
         { label: "Catatan Baru", onSelect: () => void handleCreate("note") },
         { label: "Sketsa Baru", onSelect: () => void handleCreate("drawing") },
         { label: "Folder Baru", onSelect: () => void handleCreate("folder") },
+        {
+          label: "Ganti folder workspace…",
+          onSelect: () => void handleOpenFolder(),
+        },
       ];
     }
     if (node.kind === "folder") {

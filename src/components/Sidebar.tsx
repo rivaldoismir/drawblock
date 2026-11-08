@@ -1,6 +1,13 @@
 import { useState } from "react";
 import type { DragEvent, MouseEvent, ReactNode } from "react";
-import { ChevronIcon, DrawingIcon, FolderIcon, NoteIcon, SearchIcon } from "./icons";
+import {
+  ChevronIcon,
+  DrawingIcon,
+  FolderIcon,
+  FolderOpenIcon,
+  NoteIcon,
+  SearchIcon,
+} from "./icons";
 import type { SearchResult, WorkspaceNode } from "../types";
 
 const DRAG_TYPE = "application/x-drawblock-path";
@@ -219,10 +226,11 @@ export function Sidebar({
         <button
           type="button"
           className="icon-button"
-          title="Buka folder"
+          title="Ganti folder workspace"
+          aria-label="Ganti folder workspace"
           onClick={onOpenFolder}
         >
-          +
+          <FolderOpenIcon size={15} />
         </button>
       </div>
 
@@ -276,7 +284,9 @@ export function Sidebar({
           {loading ? (
             <p className="sidebar-hint">Memuat folder…</p>
           ) : tree.length === 0 ? (
-            <p className="sidebar-hint">Folder ini kosong.</p>
+            <p className="sidebar-hint">
+              Folder ini kosong. Klik kanan di sini untuk membuat catatan.
+            </p>
           ) : (
             renderNodes(tree, 0)
           )}

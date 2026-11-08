@@ -45,10 +45,18 @@ export function useWorkspace(): WorkspaceApi {
   );
 
   const adopt = useCallback(
-    async (handle: FileSystemDirectoryHandle) => {
+    async (handle: FileSystemDirectoryHandle, resetSession = false) => {
       setLoading(true);
       setError(null);
       try {
+        if (resetSession) {
+          expandedRef.current = new Set();
+          setExpanded(new Set());
+          setSelectedFolder("");
+          await idbSet("expanded", []);
+          await idbSet("selectedFolder", "");
+          await idbSet("lastFile", "");
+        }
         setRoot(handle);
         setPending(null);
         await idbSet("workspace", handle);
@@ -71,7 +79,7 @@ export function useWorkspace(): WorkspaceApi {
           setError("Izin baca-tulis untuk folder ditolak.");
           return;
         }
-        await adopt(handle);
+        await adopt(handle, true);
       }
     } catch (cause) {
       if (cause instanceof DOMException && cause.name === "AbortError") {

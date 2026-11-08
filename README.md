@@ -35,16 +35,19 @@ DevTools → Network → Offline → reload; semua fitur tetap berjalan.
 ## Alur singkat
 
 1. **Buka Folder** → pilih folder proyek.
-2. **Catatan Baru** / **Sketsa Baru** membuat `New 1.md` / `New 1.excalidraw`
+2. **Ganti folder**: klik ikon folder di kanan kotak pencarian sidebar, atau
+   klik kanan area kosong sidebar → **Ganti folder workspace…**. Perubahan yang
+   tertunda disimpan dulu sebelum folder diganti.
+3. **Catatan Baru** / **Sketsa Baru** membuat `New 1.md` / `New 1.excalidraw`
    (nomor terkecil, dihitung terpisah per jenis).
-3. Klik file di sidebar untuk membuka; perubahan tersimpan otomatis setelah
+4. Klik file di sidebar untuk membuka; perubahan tersimpan otomatis setelah
    ~1–2 detik.
-4. Di catatan, ketik `/` → **Tautan ke gambar** untuk menautkan file
+5. Di catatan, ketik `/` → **Tautan ke gambar** untuk menautkan file
    `.excalidraw`. Tautan tersimpan sebagai `[Nama](path.excalidraw)`; klik
    tautan membuka gambar di editor.
-5. Klik kanan untuk rename/hapus; F2 untuk rename; seret file ke folder untuk
+6. Klik kanan untuk rename/hapus; F2 untuk rename; seret file ke folder untuk
    memindahkan.
-6. Tombol bulan/matahari di toolbar mengganti mode terang/gelap; pilihan
+7. Tombol bulan/matahari di toolbar mengganti mode terang/gelap; pilihan
    diingat setelah reload. Default selalu terang.
 
 ## Batasan MVP
