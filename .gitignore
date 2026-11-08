@@ -4,3 +4,16 @@ public/fonts/
 *.local
 tsconfig.tsbuildinfo
 coverage/
+
+# Local environment & secrets
+.env
+.env.*
+!.env.example
+
+# Tooling / OS noise
+.vercel/
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db
+*.log

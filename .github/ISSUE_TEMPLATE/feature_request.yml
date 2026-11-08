@@ -1,0 +1,62 @@
+name: Feature request
+description: Suggest an improvement or a new capability for DrawBlock.
+title: "[Feature]: "
+labels: ["enhancement", "needs triage"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        DrawBlock is intentionally small and local-first. Features that require a
+        cloud account, telemetry on note contents, or a proprietary format are
+        unlikely to be accepted.
+
+  - type: textarea
+    id: problem
+    attributes:
+      label: What problem are you trying to solve?
+      description: Describe the workflow or pain point, not just the solution.
+      placeholder: I keep multiple sketches per note and want to ...
+    validations:
+      required: true
+
+  - type: textarea
+    id: proposal
+    attributes:
+      label: Proposed solution
+      placeholder: Add a command that ...
+    validations:
+      required: true
+
+  - type: textarea
+    id: alternatives
+    attributes:
+      label: Alternatives considered
+      description: Workarounds you tried, or other tools that solve this well.
+    validations:
+      required: false
+
+  - type: dropdown
+    id: area
+    attributes:
+      label: Area
+      options:
+        - Notes / Markdown
+        - Sketches / Excalidraw
+        - File management
+        - Search
+        - Offline / PWA
+        - Accessibility
+        - Documentation
+        - Other
+    validations:
+      required: true
+
+  - type: checkboxes
+    id: checks
+    attributes:
+      label: Checklist
+      options:
+        - label: I searched existing issues and this is not a duplicate.
+          required: true
+        - label: This fits DrawBlock's local-first, offline-first scope.
+          required: true

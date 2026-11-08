@@ -51,7 +51,9 @@ override `window.showDirectoryPicker` ke OPFS dipakai saat pengembangan.
   "muat ulang dari disk".
 - **Baseline Markdown** (`onReady`) dipertahankan agar BlockNote yang
   menormalkan `-` → `*` / `---` → `***` tidak menulis file yang tidak diedit.
-- **Offline penuh.** Tanpa request eksternal, tanpa analytics, font lokal.
+- **Offline penuh.** Tanpa request eksternal pihak ketiga, font lokal. Satu-satunya
+  telemetri adalah Vercel Web Analytics (same-origin, agregat, tanpa cookie) yang
+  hanya aktif di host produksi; jangan menambah tracker lain.
 - **Tema default terang.** Mode gelap hanya lewat tombol toggle di toolbar,
   disimpan di `localStorage` (`drawblock:theme`). Jangan kembali ke
   `prefers-color-scheme` otomatis.

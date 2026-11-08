@@ -1,0 +1,11 @@
+blank_issues_enabled: false
+contact_links:
+  - name: Report a security vulnerability
+    url: https://github.com/rivaldoismir/drawblock/security/advisories/new
+    about: Please report security issues privately, not as a public issue.
+  - name: Contributing guide
+    url: https://github.com/rivaldoismir/drawblock/blob/main/CONTRIBUTING.md
+    about: Setup, project rules, and the pull request checklist.
+  - name: Questions and ideas
+    url: https://github.com/rivaldoismir/drawblock/discussions
+    about: Ask a question or discuss an idea (enable Discussions in repository settings).

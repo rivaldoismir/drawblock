@@ -1,6 +1,7 @@
 import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 import { EditorHost } from "./editors/EditorHost";
 import {
+  AboutDialog,
   ConflictDialog,
   ContextMenu,
   DeleteDialog,
@@ -48,6 +49,7 @@ type DialogState =
   | { kind: "rename"; node: WorkspaceNode }
   | { kind: "delete"; node: WorkspaceNode; count: number | null }
   | { kind: "moveConflict"; path: string; targetDir: string }
+  | { kind: "about" }
   | null;
 
 interface ContextMenuState {
@@ -627,6 +629,33 @@ export default function App() {
     return () => window.removeEventListener("keydown", onKey);
   }, [requestRename, selection]);
 
+  // Shortcut browser yang tidak relevan untuk aplikasi: Ctrl/Cmd+S (simpan
+  // halaman), P (cetak), O (buka file). Fase capture agar tidak didahului
+  // handler editor (BlockNote/Excalidraw).
+  useEffect(() => {
+    const BLOCKED = new Set(["s", "p", "o"]);
+    const onBrowserShortcut = (event: KeyboardEvent) => {
+      if (
+        (event.ctrlKey || event.metaKey) &&
+        !event.altKey &&
+        !event.shiftKey &&
+        BLOCKED.has(event.key.toLowerCase())
+      ) {
+        event.preventDefault();
+        event.stopPropagation();
+        if (event.key.toLowerCase() === "s") {
+          void queue.flushAll().then(() => {
+            if (!queue.hasPending()) {
+              setStatus("saved");
+            }
+          });
+        }
+      }
+    };
+    window.addEventListener("keydown", onBrowserShortcut, true);
+    return () => window.removeEventListener("keydown", onBrowserShortcut, true);
+  }, [queue]);
+
   // Simpan paksa saat tab disembunyikan/ditutup.
   useEffect(() => {
     const flush = () => {
@@ -683,6 +712,7 @@ export default function App() {
         onNewNote={() => void handleCreate("note")}
         onNewDrawing={() => void handleCreate("drawing")}
         onNewFolder={() => void handleCreate("folder")}
+        onAbout={() => setDialog({ kind: "about" })}
       />
       {workspace.root ? (
         <div className={`app-body${sidebarCollapsed ? " sidebar-collapsed" : ""}`}>
@@ -784,6 +814,10 @@ export default function App() {
           onReplace={() => void resolveMoveConflict("replace")}
           onKeepBoth={() => void resolveMoveConflict("keepBoth")}
         />
+      ) : null}
+
+      {dialog?.kind === "about" ? (
+        <AboutDialog onClose={() => setDialog(null)} />
       ) : null}
 
       {contextMenu ? (

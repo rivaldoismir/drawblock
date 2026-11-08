@@ -1,4 +1,15 @@
 import { useEffect, useState } from "react";
+import {
+  APP_CONTRIBUTING_URL,
+  APP_ISSUES_URL,
+  APP_LICENSE,
+  APP_REPO_URL,
+  APP_VERSION,
+  BLOCKNOTE_CONTRIBUTING_URL,
+  BLOCKNOTE_REPO_URL,
+  EXCALIDRAW_CONTRIBUTING_URL,
+  EXCALIDRAW_REPO_URL,
+} from "../lib/appInfo";
 
 interface ConflictDialogProps {
   path: string;
@@ -247,6 +258,95 @@ interface ContextMenuProps {
   y: number;
   items: ContextMenuItem[];
   onClose: () => void;
+}
+
+export function AboutDialog({ onClose }: { onClose: () => void }) {
+  return (
+    <div className="modal-backdrop">
+      <div
+        className="modal about-modal"
+        role="dialog"
+        aria-modal="true"
+        aria-labelledby="about-title"
+      >
+        <div className="about-head">
+          <img src="/icon.svg" alt="" width={44} height={44} />
+          <div>
+            <h2 id="about-title">DrawBlock</h2>
+            <p className="about-version">
+              Versi {APP_VERSION} · Lisensi {APP_LICENSE}
+            </p>
+          </div>
+        </div>
+
+        <p>
+          Workspace lokal untuk catatan Markdown dan sketsa Excalidraw. Tidak
+          ada akun, cloud, atau unggahan: semua file tetap di folder pilihan
+          Anda.
+        </p>
+
+        <div className="about-grid">
+          <section className="about-card">
+            <div className="about-card-head">
+              <h3>Excalidraw</h3>
+              <span className="about-badge">MIT</span>
+            </div>
+            <p>Kanvas sketsa dan diagram yang dipakai untuk file .excalidraw.</p>
+            <div className="about-links">
+              <a href={EXCALIDRAW_REPO_URL} target="_blank" rel="noopener noreferrer">
+                GitHub
+              </a>
+              <a
+                href={EXCALIDRAW_CONTRIBUTING_URL}
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                Berkontribusi
+              </a>
+            </div>
+          </section>
+
+          <section className="about-card">
+            <div className="about-card-head">
+              <h3>BlockNote</h3>
+              <span className="about-badge">MPL-2.0</span>
+            </div>
+            <p>Editor blok yang menyimpan catatan sebagai Markdown murni.</p>
+            <div className="about-links">
+              <a href={BLOCKNOTE_REPO_URL} target="_blank" rel="noopener noreferrer">
+                GitHub
+              </a>
+              <a
+                href={BLOCKNOTE_CONTRIBUTING_URL}
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                Berkontribusi
+              </a>
+            </div>
+          </section>
+        </div>
+
+        <div className="about-links about-links-main">
+          <a href={APP_REPO_URL} target="_blank" rel="noopener noreferrer">
+            Repo DrawBlock
+          </a>
+          <a href={APP_CONTRIBUTING_URL} target="_blank" rel="noopener noreferrer">
+            Kontribusi
+          </a>
+          <a href={APP_ISSUES_URL} target="_blank" rel="noopener noreferrer">
+            Laporkan bug
+          </a>
+        </div>
+
+        <div className="modal-actions">
+          <button type="button" className="primary-button" onClick={onClose}>
+            Tutup
+          </button>
+        </div>
+      </div>
+    </div>
+  );
 }
 
 export function ContextMenu({ x, y, items, onClose }: ContextMenuProps) {

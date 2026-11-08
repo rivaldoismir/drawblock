@@ -1,0 +1,89 @@
+name: Bug report
+description: Something is broken or behaves differently than documented.
+title: "[Bug]: "
+labels: ["bug", "needs triage"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thanks for taking the time to report a bug. Please search existing issues first.
+
+        **Do not report security vulnerabilities here.** Use the private advisory link in the issue chooser.
+
+  - type: textarea
+    id: description
+    attributes:
+      label: What happened?
+      description: A clear and concise description of the bug.
+      placeholder: When I rename a note while a sketch is open, ...
+    validations:
+      required: true
+
+  - type: textarea
+    id: steps
+    attributes:
+      label: Steps to reproduce
+      description: Numbered steps that reliably trigger the bug.
+      placeholder: |
+        1. Open a folder with ...
+        2. Click ...
+        3. See ...
+    validations:
+      required: true
+
+  - type: textarea
+    id: expected
+    attributes:
+      label: Expected behavior
+      placeholder: The note should be renamed without closing the editor.
+    validations:
+      required: true
+
+  - type: input
+    id: version
+    attributes:
+      label: DrawBlock version
+      description: Shown in the About dialog (info icon in the toolbar) or the latest release tag.
+      placeholder: 1.0.0
+    validations:
+      required: true
+
+  - type: input
+    id: browser
+    attributes:
+      label: Browser and version
+      placeholder: Chrome 142.0.7444.60
+    validations:
+      required: true
+
+  - type: dropdown
+    id: os
+    attributes:
+      label: Operating system
+      options:
+        - Windows
+        - macOS
+        - Linux
+        - Other (mention in description)
+    validations:
+      required: true
+
+  - type: textarea
+    id: extra
+    attributes:
+      label: Screenshots, logs, or a minimal workspace
+      description: Drag images here, or describe the folder structure. Never attach private notes.
+    validations:
+      required: false
+
+  - type: checkboxes
+    id: checks
+    attributes:
+      label: Checklist
+      options:
+        - label: I searched existing issues and this is not a duplicate.
+          required: true
+        - label: I am using Chrome or Edge on desktop (DrawBlock does not support Firefox/Safari).
+          required: true
+        - label: This is not a security vulnerability (those go through SECURITY.md).
+          required: true

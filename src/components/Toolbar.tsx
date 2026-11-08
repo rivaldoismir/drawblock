@@ -1,4 +1,4 @@
-import { MoonIcon, SunIcon } from "./icons";
+import { InfoIcon, MoonIcon, SunIcon } from "./icons";
 import type { SaveStatus } from "../types";
 import type { Theme } from "../hooks/useTheme";
 
@@ -14,6 +14,7 @@ interface ToolbarProps {
   onNewNote: () => void;
   onNewDrawing: () => void;
   onNewFolder: () => void;
+  onAbout: () => void;
 }
 
 const STATUS_LABEL: Record<SaveStatus, string> = {
@@ -35,6 +36,7 @@ export function Toolbar({
   onNewNote,
   onNewDrawing,
   onNewFolder,
+  onAbout,
 }: ToolbarProps) {
   const label = STATUS_LABEL[status];
 
@@ -95,6 +97,15 @@ export function Toolbar({
           onClick={onToggleTheme}
         >
           {theme === "dark" ? <SunIcon size={15} /> : <MoonIcon size={15} />}
+        </button>
+        <button
+          type="button"
+          className="icon-button"
+          title="Tentang DrawBlock"
+          aria-label="Tentang DrawBlock"
+          onClick={onAbout}
+        >
+          <InfoIcon size={15} />
         </button>
       </div>
     </header>
