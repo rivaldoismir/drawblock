@@ -155,11 +155,9 @@ export default function App() {
     }
   }, [index, workspace.root]);
 
-  useEffect(() => {
-    return () => {
-      queue.dispose();
-    };
-  }, [queue]);
+  // Catatan: JANGAN memanggil queue.dispose() di cleanup effect. React
+  // StrictMode (mode dev) menjalankan cleanup tepat setelah setup, sehingga
+  // antrean mati permanen dan status tersangkut di "Menyimpan…".
 
   const openFile = useCallback(
     async (node: WorkspaceNode) => {

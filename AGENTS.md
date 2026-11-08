@@ -42,6 +42,10 @@ override `window.showDirectoryPicker` ke OPFS dipakai saat pengembangan.
 - **Autosave** lewat `SaveQueue` (`src/services/saveQueue.ts`): debounce 1,2 dtk
   (catatan) / 1,5 dtk (gambar), rantai tulis per path, flush saat pindah file,
   `visibilitychange`, `pagehide`, `beforeunload`.
+- **Jangan pernah memanggil `queue.dispose()` di cleanup `useEffect`.** React
+  StrictMode (dev) menjalankan cleanup tepat setelah setup; antrean akan mati
+  permanen dan status tersangkut di "Menyimpan…". `SaveQueue` hidup selama
+  aplikasi.
 - **Jangan remount editor saat rename/move.** `EditorHost` memakai
   `sessionId` + `nonce`, bukan path. Remount hanya saat membuka file lain atau
   "muat ulang dari disk".
