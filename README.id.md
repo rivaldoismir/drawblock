@@ -34,7 +34,7 @@
 Angka diperbarui setiap hari dari Vercel Web Analytics dan GitHub Traffic.
 Semuanya agregat — tidak ada identitas pengunjung yang dikumpulkan. Kedua angka
 menampilkan `n/a` sampai token yang diperlukan dikonfigurasi (lihat
-[`docs/ANALYTICS.md`](docs/ANALYTICS.md#badge-jumlah-kunjungan-di-readme)).
+[`docs/ANALYTICS.md`](docs/ANALYTICS.md#4-badge-jumlah-kunjungan-di-readme)).
 
 ## Mengapa DrawBlock?
 

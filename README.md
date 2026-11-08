@@ -34,7 +34,7 @@
 Counters are refreshed daily from Vercel Web Analytics and GitHub Traffic. They
 are aggregate only — no visitor identities are collected. Both counters show
 `n/a` until the required tokens are configured (see
-[`docs/ANALYTICS.md`](docs/ANALYTICS.md#badge-jumlah-kunjungan-di-readme)).
+[`docs/ANALYTICS.md`](docs/ANALYTICS.md#4-badge-jumlah-kunjungan-di-readme)).
 
 ## Why DrawBlock?
 
