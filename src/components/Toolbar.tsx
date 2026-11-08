@@ -61,7 +61,7 @@ export function Toolbar({
               className="secondary-button compact"
               onClick={onNewDrawing}
             >
-              Gambar Baru
+              Sketsa Baru
             </button>
             <button
               type="button"

@@ -577,14 +577,14 @@ export default function App() {
     if (!node) {
       return [
         { label: "Catatan Baru", onSelect: () => void handleCreate("note") },
-        { label: "Gambar Baru", onSelect: () => void handleCreate("drawing") },
+        { label: "Sketsa Baru", onSelect: () => void handleCreate("drawing") },
         { label: "Folder Baru", onSelect: () => void handleCreate("folder") },
       ];
     }
     if (node.kind === "folder") {
       return [
         { label: "Catatan Baru di sini", onSelect: () => void handleCreate("note") },
-        { label: "Gambar Baru di sini", onSelect: () => void handleCreate("drawing") },
+        { label: "Sketsa Baru di sini", onSelect: () => void handleCreate("drawing") },
         { label: "Folder Baru di sini", onSelect: () => void handleCreate("folder") },
         { label: "Ganti nama", onSelect: () => requestRename(node) },
         { label: "Hapus", onSelect: () => void requestDelete(node), danger: true },

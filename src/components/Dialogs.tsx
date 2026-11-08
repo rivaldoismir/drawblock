@@ -208,7 +208,7 @@ export function DrawingPickerDialog({
           {visible.length === 0 ? (
             <p className="picker-empty">
               {drawings.length === 0
-                ? "Belum ada gambar di workspace. Buat lewat tombol Gambar Baru."
+                ? "Belum ada gambar di workspace. Buat lewat tombol Sketsa Baru."
                 : "Tidak ada gambar yang cocok."}
             </p>
           ) : (

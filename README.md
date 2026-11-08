@@ -35,7 +35,7 @@ DevTools → Network → Offline → reload; semua fitur tetap berjalan.
 ## Alur singkat
 
 1. **Buka Folder** → pilih folder proyek.
-2. **Catatan Baru** / **Gambar Baru** membuat `New 1.md` / `New 1.excalidraw`
+2. **Catatan Baru** / **Sketsa Baru** membuat `New 1.md` / `New 1.excalidraw`
    (nomor terkecil, dihitung terpisah per jenis).
 3. Klik file di sidebar untuk membuka; perubahan tersimpan otomatis setelah
    ~1–2 detik.
