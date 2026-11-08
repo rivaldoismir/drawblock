@@ -48,6 +48,9 @@ override `window.showDirectoryPicker` ke OPFS dipakai saat pengembangan.
 - **Baseline Markdown** (`onReady`) dipertahankan agar BlockNote yang
   menormalkan `-` → `*` / `---` → `***` tidak menulis file yang tidak diedit.
 - **Offline penuh.** Tanpa request eksternal, tanpa analytics, font lokal.
+- **Tema default terang.** Mode gelap hanya lewat tombol toggle di toolbar,
+  disimpan di `localStorage` (`drawblock:theme`). Jangan kembali ke
+  `prefers-color-scheme` otomatis.
 - **Hanya Chrome/Edge.** Jangan tambah polyfill Firefox/Safari.
 - **Jangan fork/vendor** BlockNote atau Excalidraw.
 

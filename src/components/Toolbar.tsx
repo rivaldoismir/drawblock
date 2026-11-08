@@ -1,4 +1,6 @@
+import { MoonIcon, SunIcon } from "./icons";
 import type { SaveStatus } from "../types";
+import type { Theme } from "../hooks/useTheme";
 
 interface ToolbarProps {
   fileName: string | null;
@@ -6,8 +8,9 @@ interface ToolbarProps {
   error: string | null;
   hasRoot: boolean;
   sidebarCollapsed: boolean;
+  theme: Theme;
+  onToggleTheme: () => void;
   onToggleSidebar: () => void;
-  onOpenFolder: () => void;
   onNewNote: () => void;
   onNewDrawing: () => void;
   onNewFolder: () => void;
@@ -26,12 +29,15 @@ export function Toolbar({
   error,
   hasRoot,
   sidebarCollapsed,
+  theme,
+  onToggleTheme,
   onToggleSidebar,
-  onOpenFolder,
   onNewNote,
   onNewDrawing,
   onNewFolder,
 }: ToolbarProps) {
+  const label = STATUS_LABEL[status];
+
   return (
     <header className="toolbar">
       <div className="toolbar-left">
@@ -64,9 +70,6 @@ export function Toolbar({
             >
               Folder Baru
             </button>
-            <button type="button" className="text-button" onClick={onOpenFolder}>
-              Buka folder lain
-            </button>
           </>
         ) : null}
       </div>
@@ -74,17 +77,25 @@ export function Toolbar({
         <span className="file-name" title={fileName ?? undefined}>
           {fileName ?? "Belum ada file terbuka"}
         </span>
-      </div>
-      <div className="toolbar-right">
-        {STATUS_LABEL[status] ? (
+        {fileName && label ? (
           <span
             className={`save-status status-${status}`}
             role="status"
             title={error ?? undefined}
           >
-            {STATUS_LABEL[status]}
+            <span className="status-dot" aria-hidden="true" />
+            {label}
           </span>
         ) : null}
+        <button
+          type="button"
+          className="icon-button"
+          title={theme === "dark" ? "Ganti ke mode terang" : "Ganti ke mode gelap"}
+          aria-label={theme === "dark" ? "Ganti ke mode terang" : "Ganti ke mode gelap"}
+          onClick={onToggleTheme}
+        >
+          {theme === "dark" ? <SunIcon size={15} /> : <MoonIcon size={15} />}
+        </button>
       </div>
     </header>
   );

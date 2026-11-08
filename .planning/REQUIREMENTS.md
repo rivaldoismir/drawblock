@@ -54,7 +54,7 @@
 
 - [x] **PWA-01**: Offline setelah kunjungan pertama; dapat dipasang sebagai PWA
 - [x] **PWA-02**: Font/aset lokal, tanpa request jaringan keluar, tanpa analytics
-- [x] **PWA-03**: Tema terang/gelap mengikuti sistem (P1)
+- [x] **PWA-03**: Tema default terang dengan toggle mode gelap yang diingat (P1)
 
 ## v2 Requirements
 

@@ -44,6 +44,8 @@ DevTools → Network → Offline → reload; semua fitur tetap berjalan.
    tautan membuka gambar di editor.
 5. Klik kanan untuk rename/hapus; F2 untuk rename; seret file ke folder untuk
    memindahkan.
+6. Tombol bulan/matahari di toolbar mengganti mode terang/gelap; pilihan
+   diingat setelah reload. Default selalu terang.
 
 ## Batasan MVP
 

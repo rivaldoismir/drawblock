@@ -11,6 +11,13 @@
     />
     <title>DrawBlock</title>
     <script>
+      // Default terang; terapkan pilihan gelap sebelum paint agar tidak berkedip.
+      try {
+        document.documentElement.dataset.theme =
+          localStorage.getItem("drawblock:theme") === "dark" ? "dark" : "light";
+      } catch (error) {
+        document.documentElement.dataset.theme = "light";
+      }
       window.EXCALIDRAW_EXPORT_SOURCE = "drawblock";
     </script>
   </head>

@@ -11,7 +11,7 @@ import { EmptyState } from "./components/EmptyState";
 import { Sidebar } from "./components/Sidebar";
 import { Toolbar } from "./components/Toolbar";
 import { useWorkspace } from "./hooks/useWorkspace";
-import { usePrefersTheme } from "./hooks/usePrefersTheme";
+import { useTheme } from "./hooks/useTheme";
 import {
   ConflictError,
   countDirectory,
@@ -58,7 +58,7 @@ interface ContextMenuState {
 
 export default function App() {
   const workspace = useWorkspace();
-  const theme = usePrefersTheme();
+  const { theme, toggleTheme } = useTheme();
   const [active, setActive] = useState<ActiveFile | null>(null);
   const [status, setStatus] = useState<SaveStatus>("idle");
   const [saveError, setSaveError] = useState<string | null>(null);
@@ -197,7 +197,7 @@ export default function App() {
         }
         queue.setBaseline(node.path, file.lastModified);
         setSessionId((value) => value + 1);
-        setStatus("idle");
+        setStatus("saved");
         setSaveError(null);
         void idbSet("lastFile", node.path);
       } catch (error) {
@@ -281,6 +281,7 @@ export default function App() {
         queuedTextRef.current = markdown;
         queue.schedule(current.path, markdown, NOTE_DEBOUNCE_MS);
         index.upsertNote(current.path, markdown);
+        setStatus("saving");
       }
     },
     [index, queue],
@@ -321,6 +322,7 @@ export default function App() {
           () => serializeScene(snapshot),
           DRAWING_DEBOUNCE_MS,
         );
+        setStatus("saving");
       }
     },
     [queue],
@@ -673,8 +675,9 @@ export default function App() {
         error={saveError}
         hasRoot={workspace.root !== null}
         sidebarCollapsed={sidebarCollapsed}
+        theme={theme}
+        onToggleTheme={toggleTheme}
         onToggleSidebar={() => setSidebarCollapsed((value) => !value)}
-        onOpenFolder={() => void handleOpenFolder()}
         onNewNote={() => void handleCreate("note")}
         onNewDrawing={() => void handleCreate("drawing")}
         onNewFolder={() => void handleCreate("folder")}

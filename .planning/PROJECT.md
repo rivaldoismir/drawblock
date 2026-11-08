@@ -44,7 +44,7 @@ Satu folder, dua editor, file standar yang tetap milik pengguna — buka folder,
 - [x] **LINK-02**: Klik tautan `.excalidraw` di catatan membuka gambar itu di editor; tautan rusak memberi pemberitahuan tanpa menghapus teks tautan
 - [x] **PWA-01**: Berjalan offline setelah kunjungan pertama dan dapat dipasang sebagai PWA
 - [x] **PWA-02**: Semua font/aset dilayani lokal; tidak ada permintaan jaringan keluar dan tanpa analytics
-- [x] **PWA-03**: Tema terang/gelap mengikuti sistem (P1)
+- [x] **PWA-03**: Tema default terang dengan toggle mode gelap yang diingat (P1)
 
 ### Out of Scope
 

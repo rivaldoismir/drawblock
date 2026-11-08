@@ -34,6 +34,8 @@ Tes unit mencakup: `path`/validasi nama, penomoran `New N` per ekstensi,
 | Tautan `[Gambar](gambar.excalidraw)` di catatan → klik membuka editor gambar | PASS |
 | Ubah file dari luar lalu mengetik → dialog konflik muncul; "Muat ulang" menampilkan versi disk; "Timpa" menulis versi editor | PASS |
 | Offline: SW aktif, reload dengan Network offline → aplikasi + workspace terakhir pulih | PASS |
+| Indikator simpan: "Tersimpan" tampil begitu file dibuka; "Menyimpan…" langsung saat mengetik; "Tersimpan" lagi setelah ±2 dtk | PASS |
+| Tema default terang; toggle gelap mengubah `data-theme`, `--bg`, disimpan di `localStorage`, bertahan setelah reload | PASS |
 | Request eksternal selama pemakaian | 0 (semua same-origin) |
 | Error runtime di konsol | 0 |
 

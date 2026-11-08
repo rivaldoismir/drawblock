@@ -93,7 +93,7 @@ Plans:
 **Requirements**: EDIT-04, SIDE-04, PWA-01, PWA-02, PWA-03
 **Success Criteria** (what must be TRUE):
   1. `npm run build && npm run preview`, DevTools offline → reload → semua fitur tetap jalan; tidak ada request eksternal.
-  2. Excalidraw hanya dimuat saat file gambar pertama dibuka; tema mengikuti sistem; sidebar bisa dilipat dan diingat.
+  2. Excalidraw hanya dimuat saat file gambar pertama dibuka; tema default terang dengan toggle gelap; sidebar bisa dilipat dan diingat.
   3. PWA bisa di-install dan membuka workspace terakhir.
 **Plans**: 1 plan
 
