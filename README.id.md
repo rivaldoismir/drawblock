@@ -15,6 +15,7 @@
   <a href="LICENSE"><img alt="Lisensi: MIT" src="https://img.shields.io/badge/lisensi-MIT-6965db" /></a>
   <img alt="PWA" src="https://img.shields.io/badge/PWA-siap--offline-6965db" />
   <img alt="Chrome dan Edge" src="https://img.shields.io/badge/Chrome%20%7C%20Edge-desktop-4285F4" />
+  <a href="https://github.com/rivaldoismir/drawblock"><img alt="GitHub stars" src="https://img.shields.io/github/stars/rivaldoismir/drawblock?style=flat" /></a>
   <a href="https://github.com/rivaldoismir/drawblock/graphs/traffic"><img alt="Repo views (14d)" src="https://img.shields.io/endpoint?url=https://raw.githubusercontent.com/rivaldoismir/drawblock/main/docs/stats/repo-views.json" /></a>
   <a href="https://drawblock.vercel.app"><img alt="App page views" src="https://img.shields.io/endpoint?url=https://raw.githubusercontent.com/rivaldoismir/drawblock/main/docs/stats/app-pageviews.json" /></a>
 </p>
@@ -31,10 +32,9 @@
 </p>
 
 Angka diperbarui setiap hari dari Vercel Web Analytics dan GitHub Traffic.
-Semuanya agregat — tidak ada identitas pengunjung yang dikumpulkan. Angka
-aplikasi menampilkan `n/a` sampai token Vercel dikonfigurasi (lihat
-[`docs/ANALYTICS.md`](docs/ANALYTICS.md#badge-jumlah-kunjungan-di-readme));
-angka repo tetap berjalan tanpa secret tambahan.
+Semuanya agregat — tidak ada identitas pengunjung yang dikumpulkan. Kedua angka
+menampilkan `n/a` sampai token yang diperlukan dikonfigurasi (lihat
+[`docs/ANALYTICS.md`](docs/ANALYTICS.md#badge-jumlah-kunjungan-di-readme)).
 
 ## Mengapa DrawBlock?
 

@@ -15,6 +15,7 @@
   <a href="LICENSE"><img alt="License: MIT" src="https://img.shields.io/badge/license-MIT-6965db" /></a>
   <img alt="PWA" src="https://img.shields.io/badge/PWA-offline--ready-6965db" />
   <img alt="Chrome and Edge" src="https://img.shields.io/badge/Chrome%20%7C%20Edge-desktop-4285F4" />
+  <a href="https://github.com/rivaldoismir/drawblock"><img alt="GitHub stars" src="https://img.shields.io/github/stars/rivaldoismir/drawblock?style=flat" /></a>
   <a href="https://github.com/rivaldoismir/drawblock/graphs/traffic"><img alt="Repo views (14d)" src="https://img.shields.io/endpoint?url=https://raw.githubusercontent.com/rivaldoismir/drawblock/main/docs/stats/repo-views.json" /></a>
   <a href="https://drawblock.vercel.app"><img alt="App page views" src="https://img.shields.io/endpoint?url=https://raw.githubusercontent.com/rivaldoismir/drawblock/main/docs/stats/app-pageviews.json" /></a>
 </p>
@@ -31,10 +32,9 @@
 </p>
 
 Counters are refreshed daily from Vercel Web Analytics and GitHub Traffic. They
-are aggregate only — no visitor identities are collected. App counters show
-`n/a` until the Vercel token is configured (see
-[`docs/ANALYTICS.md`](docs/ANALYTICS.md#badge-jumlah-kunjungan-di-readme));
-repository counters work without any extra secret.
+are aggregate only — no visitor identities are collected. Both counters show
+`n/a` until the required tokens are configured (see
+[`docs/ANALYTICS.md`](docs/ANALYTICS.md#badge-jumlah-kunjungan-di-readme)).
 
 ## Why DrawBlock?
 

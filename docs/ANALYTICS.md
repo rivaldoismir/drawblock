@@ -128,11 +128,22 @@ diperbarui otomatis oleh workflow
 [`.github/workflows/analytics.yml`](../.github/workflows/analytics.yml)
 setiap hari pukul 03:17 UTC, atau manual lewat tab **Actions**.
 
-### Badge repo (langsung aktif)
+### Badge repo (butuh `TRAFFIC_TOKEN`)
 
-Workflow memakai `GITHUB_TOKEN` bawaan Actions untuk membaca GitHub Traffic.
-Tidak perlu secret tambahan. Kalau API menolak, badge tetap menampilkan nilai
-terakhir dan workflow mencatat peringatan.
+`GITHUB_TOKEN` bawaan Actions **tidak bisa** membaca endpoint Traffic (selalu
+`403 Forbidden`). Karena itu perlu satu classic personal access token:
+
+1. Buka **GitHub → Settings → Developer settings → Personal access tokens →
+   Tokens (classic) → Generate new token**.
+2. Beri nama, mis. `drawblock-traffic`, centang scope **`repo`**, dan atur masa
+   berlaku (mis. 90 hari).
+3. Simpan token di repo → **Settings → Secrets and variables → Actions →
+   Secrets → New repository secret**:
+   - `TRAFFIC_TOKEN` = token tersebut.
+
+Workflow memakai `TRAFFIC_TOKEN` bila ada; kalau tidak ada, badge repo
+menampilkan `n/a` (bukan angka lama yang menyesatkan). Token hanya dipakai
+untuk membaca `traffic/views`, `traffic/clones`, dan metadata repo.
 
 ### Badge aplikasi (butuh token Vercel)
 
@@ -153,7 +164,15 @@ terakhir dan workflow mencatat peringatan.
    ikut berubah.
 
 Kalau `VERCEL_TOKEN`/`VERCEL_PROJECT_ID` belum diisi, workflow tetap berhasil;
-badge aplikasi menampilkan `n/a` dan badge repo tetap diperbarui.
+badge aplikasi menampilkan `n/a`.
+
+### Ringkasan secret
+
+| Nama | Jenis | Untuk | Wajib? |
+| --- | --- | --- | --- |
+| `TRAFFIC_TOKEN` | Secret | Repo views/clones (PAT classic, scope `repo`) | Ya, untuk angka repo |
+| `VERCEL_TOKEN` | Secret | App page views/visitors | Ya, untuk angka aplikasi |
+| `VERCEL_PROJECT_ID` | Variable | ID proyek Vercel (`prj_...`) | Ya, untuk angka aplikasi |
 
 **Keamanan:** token hanya disimpan sebagai secret Actions, tidak pernah masuk
 repo. Jangan menaruh token di `vercel.json`, README, atau kode klien. Rotasi

@@ -29,6 +29,9 @@ jobs:
         run: node scripts/update-stats.mjs
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          # Classic PAT with `repo` scope; the default GITHUB_TOKEN gets 403
+          # from the Traffic API. Optional: repo badges show n/a without it.
+          TRAFFIC_TOKEN: ${{ secrets.TRAFFIC_TOKEN }}
           VERCEL_TOKEN: ${{ secrets.VERCEL_TOKEN }}
           VERCEL_PROJECT_ID: ${{ vars.VERCEL_PROJECT_ID }}
 

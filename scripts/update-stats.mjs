@@ -20,7 +20,10 @@ import { mkdir, readFile, writeFile } from "node:fs/promises";
 import { fileURLToPath } from "node:url";
 
 const repo = process.env.GITHUB_REPO || "rivaldoismir/drawblock";
-const ghToken = process.env.GITHUB_TOKEN || "";
+// GITHUB_TOKEN cannot read the Traffic API (it returns 403). A classic PAT with
+// `repo` scope, stored as TRAFFIC_TOKEN, is required for repo view/clone counts.
+const ghToken = process.env.TRAFFIC_TOKEN || process.env.GITHUB_TOKEN || "";
+const hasTrafficToken = Boolean(process.env.TRAFFIC_TOKEN);
 const vercelToken = process.env.VERCEL_TOKEN || "";
 const vercelProjectId = process.env.VERCEL_PROJECT_ID || "";
 const outDir = fileURLToPath(new URL("../docs/stats/", import.meta.url));
@@ -104,16 +107,15 @@ await mkdir(outDir, { recursive: true });
 const views = await github("traffic/views");
 if (views) {
   await writeBadge("repo-views.json", "repo views (14d)", views.count ?? null);
+} else if (!hasTrafficToken) {
+  await writeBadge("repo-views.json", "repo views (14d)", null);
 }
 
 const clones = await github("traffic/clones");
 if (clones) {
   await writeBadge("repo-clones.json", "repo clones (14d)", clones.count ?? null);
-}
-
-const meta = await github("");
-if (meta) {
-  await writeBadge("repo-stars.json", "stars", meta.stargazers_count ?? null);
+} else if (!hasTrafficToken) {
+  await writeBadge("repo-clones.json", "repo clones (14d)", null);
 }
 
 const visits = await vercelVisits();
