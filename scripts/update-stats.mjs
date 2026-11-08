@@ -95,7 +95,10 @@ async function vercelVisits() {
     headers: { Authorization: `Bearer ${vercelToken}` },
   });
   if (!response.ok) {
-    console.warn(`[stats] Vercel analytics: ${response.status} ${response.statusText}`);
+    const detail = (await response.text()).slice(0, 500);
+    console.warn(
+      `[stats] Vercel analytics: ${response.status} ${response.statusText} ${detail}`,
+    );
     return null;
   }
   const payload = await response.json();
