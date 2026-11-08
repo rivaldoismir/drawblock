@@ -45,5 +45,5 @@ jobs:
           fi
           git add docs/stats
           git commit -m "chore: update visit counters"
-          git pull --rebase origin main
-          git push
+          # Works even when checkout is a detached HEAD.
+          git push origin HEAD:main
