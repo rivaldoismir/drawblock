@@ -115,7 +115,55 @@ harus didokumentasikan di README + SECURITY, karena mengubah janji privasi
 proyek. Rekomendasi saat ini: **jangan** menambahkannya; gunakan Vercel
 Analytics + GitHub Traffic sebagai indikator minat.
 
-## 4. Ringkasan privasi
+## 4. Badge jumlah kunjungan di README
+
+README menampilkan badge agregat:
+
+- **App page views** dan **App visitors** — dari Vercel Web Analytics.
+- **Repo views (14d)** dan **Repo clones (14d)** — dari GitHub Traffic.
+
+Badge membaca file JSON di `docs/stats/` lewat
+[Shields.io endpoint](https://shields.io/badges/endpoint-badge). File itu
+diperbarui otomatis oleh workflow
+[`.github/workflows/analytics.yml`](../.github/workflows/analytics.yml)
+setiap hari pukul 03:17 UTC, atau manual lewat tab **Actions**.
+
+### Badge repo (langsung aktif)
+
+Workflow memakai `GITHUB_TOKEN` bawaan Actions untuk membaca GitHub Traffic.
+Tidak perlu secret tambahan. Kalau API menolak, badge tetap menampilkan nilai
+terakhir dan workflow mencatat peringatan.
+
+### Badge aplikasi (butuh token Vercel)
+
+1. Buat **Vercel Access Token**:
+   - Buka [Vercel Dashboard](https://vercel.com/account/tokens) → **Settings →
+     Tokens → Create Token**.
+   - Pilih scope proyek `drawblock` bila memungkinkan, dan atur masa berlaku.
+2. Ambil **Project ID**:
+   - Vercel Dashboard → proyek `drawblock` → **Settings → General → Project ID**
+     (formatnya `prj_...`).
+3. Di repo GitHub → **Settings → Secrets and variables → Actions**:
+   - **Secrets** → `VERCEL_TOKEN` = token dari langkah 1.
+   - **Variables** → `VERCEL_PROJECT_ID` = ID dari langkah 2.
+4. Jalankan workflow:
+   - **Actions → Update visit counters → Run workflow**.
+5. Setelah selesai, `docs/stats/app-pageviews.json` dan
+   `docs/stats/app-visitors.json` akan berisi angka asli, dan badge README
+   ikut berubah.
+
+Kalau `VERCEL_TOKEN`/`VERCEL_PROJECT_ID` belum diisi, workflow tetap berhasil;
+badge aplikasi menampilkan `n/a` dan badge repo tetap diperbarui.
+
+**Keamanan:** token hanya disimpan sebagai secret Actions, tidak pernah masuk
+repo. Jangan menaruh token di `vercel.json`, README, atau kode klien. Rotasi
+token secara berkala dan hapus jika tidak dipakai.
+
+**Batasan:** angka aplikasi adalah page views/visitors produksi sejak Web
+Analytics diaktifkan; angka repo adalah jendela 14 hari. Keduanya agregat dan
+tidak mengungkap identitas.
+
+## 5. Ringkasan privasi
 
 | Sumber | Apa yang dikirim | Cookie | Isi catatan |
 | --- | --- | --- | --- |
