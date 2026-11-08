@@ -5,6 +5,8 @@
 - **Situs:** https://drawblock.vercel.app
 - **Target:** rilis publik `v1.0.0`, lisensi terbuka, atribusi + ajakan kontribusi
   ke Excalidraw dan BlockNote, ikon PWA yang layak, README persuasif.
+- **Status:** ✅ Dipublikasikan 2026-11-08. Repo publik, release `v1.0.0` terbit,
+  CI hijau, secret scanning + Dependabot aktif, ikon baru live di Vercel.
 
 ## 1. Temuan audit awal
 
@@ -142,11 +144,13 @@
 - [x] README punya tombol Vercel, atribusi Excalidraw/BlockNote, dan tautan kontribusi.
 - [x] Dialog Tentang berfungsi, `Esc` menutup, tautan aman, offline tetap jalan.
 - [x] `LICENSE`, `CONTRIBUTING`, `SECURITY`, `CODE_OF_CONDUCT`, `CHANGELOG` ada.
-- [ ] CI hijau; Dependabot & secret scanning aktif (setelah publish).
+- [x] CI hijau; Dependabot & secret scanning aktif (setelah publish).
 - [x] `npm audit` tidak lagi memuat temuan **high**; sisa 4 low build-time
       terdokumentasi di `SECURITY.md`.
-- [ ] Repo publik, deskripsi/topics terisi, release `v1.0.0` terbit.
+- [x] Repo publik, deskripsi/topics terisi, release `v1.0.0` terbit.
 - [x] Vercel Analytics + GitHub Traffic terdokumentasi di `docs/ANALYTICS.md`.
+- [x] Header keamanan live di https://drawblock.vercel.app (diverifikasi via HEAD).
+- [x] Tidak ada request eksternal saat aplikasi dimuat (diverifikasi via CDP).
 
 ## 4. Risiko & rollback
 
